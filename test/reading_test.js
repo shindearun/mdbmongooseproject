@@ -2,43 +2,15 @@ const assert = require('assert');
 const User = require('../src/user');
 
 describe('Reading users out of the database', () => {
-  let joe, maria, alex, zach, blogPost, comment;
+  let joe, maria, alex, zach;
 
   beforeEach((done) => {
-    
-    joe = new User({ name: 'Joe' });
-
-    joe.save().then(() => done());
-
-   // Promise.all([joe.save(), alex.save(), maria.save(), zach.save()])
-   //   .then(() => done());
-  });
-  beforeEach((done) => {
-    
-    maria = new User({ name: 'Maria' });
-
-    maria.save().then(() => done());
-
-   // Promise.all([joe.save(), alex.save(), maria.save(), zach.save()])
-   //   .then(() => done());
-  });
-  beforeEach((done) => {
-    
     alex = new User({ name: 'Alex' });
-
-    alex.save().then(() => done());
-
-   // Promise.all([joe.save(), alex.save(), maria.save(), zach.save()])
-   //   .then(() => done());
-  });
-  beforeEach((done) => {
-    
+    joe = new User({ name: 'Joe' });
+    maria = new User({ name: 'Maria' });
     zach = new User({ name: 'Zach' });
-
-    zach.save().then(() => done());
-
-   // Promise.all([joe.save(), alex.save(), maria.save(), zach.save()])
-   //   .then(() => done());
+    var usersar = [alex,joe,maria,zach];
+    User.collection.insert(usersar).then(() => done());
   });
 
   it('finds all users with a name of joe', (done) => {
