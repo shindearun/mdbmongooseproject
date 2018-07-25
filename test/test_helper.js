@@ -21,11 +21,7 @@ before((done) => {
 });
 
 beforeEach((done) => {
-    console.log('in test_helper beforeEach method');
- /*  mongoose.connection.collections.users.drop(() => {
-    // Ready to run the next test!
-    done();
-  } */
+  console.log('in test_helper beforeEach method');
   const { users, comments, blogposts } = mongoose.connection.collections;
   users.drop(() => {
     comments.drop(() => {
@@ -34,8 +30,6 @@ beforeEach((done) => {
       });
     });
   });
-
-  
 });
 
  after(() =>{

@@ -2,16 +2,43 @@ const assert = require('assert');
 const User = require('../src/user');
 
 describe('Reading users out of the database', () => {
-  let joe, maria, alex, zach;
+  let joe, maria, alex, zach, blogPost, comment;
 
   beforeEach((done) => {
-    alex = new User({ name: 'Alex' });
+    
     joe = new User({ name: 'Joe' });
+
+    joe.save().then(() => done());
+
+   // Promise.all([joe.save(), alex.save(), maria.save(), zach.save()])
+   //   .then(() => done());
+  });
+  beforeEach((done) => {
+    
     maria = new User({ name: 'Maria' });
+
+    maria.save().then(() => done());
+
+   // Promise.all([joe.save(), alex.save(), maria.save(), zach.save()])
+   //   .then(() => done());
+  });
+  beforeEach((done) => {
+    
+    alex = new User({ name: 'Alex' });
+
+    alex.save().then(() => done());
+
+   // Promise.all([joe.save(), alex.save(), maria.save(), zach.save()])
+   //   .then(() => done());
+  });
+  beforeEach((done) => {
+    
     zach = new User({ name: 'Zach' });
 
-    Promise.all([joe.save(), alex.save(), maria.save(), zach.save()])
-      .then(() => done());
+    zach.save().then(() => done());
+
+   // Promise.all([joe.save(), alex.save(), maria.save(), zach.save()])
+   //   .then(() => done());
   });
 
   it('finds all users with a name of joe', (done) => {
@@ -30,7 +57,7 @@ describe('Reading users out of the database', () => {
       });
   });
 
-  it('can skip and limit the result set', (done) => {
+  it.only('can skip and limit the result set', (done) => {
     User.find({})
       .sort({ name: 1 })
       .skip(1)
