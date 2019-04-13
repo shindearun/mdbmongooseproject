@@ -8,6 +8,7 @@ describe('Assocations', () => {
   let joe, blogPost, comment;
 
   beforeEach((done) => {
+    console.log('in association_test beforeEach method');
     joe = new User({ name: 'Joe' });
     blogPost = new BlogPost({ title: 'JS is Great', content: 'Yep it really is' });
     comment = new Comment({ content: 'Congrats on great post' });

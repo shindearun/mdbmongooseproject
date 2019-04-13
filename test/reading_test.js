@@ -29,7 +29,8 @@ describe('Reading users out of the database', () => {
       });
   });
 
-  it.only('can skip and limit the result set', (done) => {
+  //it.only('can skip and limit the result set', (done) => { // if this line is not commented Only this test is run OUT OF ALL TEST SUITE.
+  it('can skip and limit the result set', (done) => {
     User.find({})
       .sort({ name: 1 })
       .skip(1)
