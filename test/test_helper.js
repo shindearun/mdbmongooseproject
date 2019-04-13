@@ -20,7 +20,7 @@ before((done) => {
    // console.log('in test_helper before method end');
 });
 
-beforeEach((done) => {
+beforeEach('test_helper beforeEach', (done) => {
   console.log('in test_helper beforeEach method');
   const { users, comments, blogposts } = mongoose.connection.collections;
   users.drop(() => {
